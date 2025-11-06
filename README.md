@@ -11,6 +11,7 @@ This server interacts with X, Y and Z server in order to provider users with F.
 - [Features](#features)
 - [Dependencies & Related Services](#dependencies--related-services)
 - [API Documentation](#api-documentation)
+- [Database Schema](#database-schema)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
@@ -45,6 +46,12 @@ External dependencies:
 
 The API is fully documented using the [OpenAPI standard](https://swagger.io/specification/). It's schema is located at [docs/openapi.yaml](docs/ai-agent-context.md).
 
+## Database Schema
+
+<!-- Remove this section if the service does not have a database -->
+
+See [docs/database-schemas.md](docs/database-schemas.md) for detailed schema, column definitions, and relationships
+
 ## Getting Started
 
 ### Prerequisites
@@ -53,7 +60,7 @@ Before running this service, ensure you have the following installed:
 
 - **Node.js**: Version 22.x or higher (LTS recommended)
 - **Yarn**: Version 1.22.x or higher
-- **Docker** (optional): For containerized deployment
+- **Docker**: For containerized deployment
 
 <!-- List any other dependencies that are required to run the service -->
 
@@ -139,25 +146,6 @@ yarn test test/integration
 - **Integration Tests** (`test/integration/`): Test the complete request/response cycle
 
 For detailed testing guidelines and standards, refer to our [Testing Standards](https://github.com/decentraland/docs/tree/main/development-standards/testing-standards) documentation.
-
-## How to Contribute
-
-We welcome contributions! Before contributing, please familiarize yourself with [our development standards](https://github.com/decentraland/docs/tree/main/development-standards).
-
-### Quick Start for Contributors
-
-1. Fork the repository (if external contributor)
-2. Create a feature branch: `git checkout -b feature/your-feature-name`
-3. Make your changes following our coding standards
-4. Write/update tests for your changes
-5. Ensure all tests pass: `yarn test`
-6. Ensure the build succeeds: `yarn build`
-7. Ensure the linter succeeds: `yarn lint`. You can automatically fix linting issues with `yarn lint:fix`
-8. Commit your changes with clear, descriptive messages
-9. Push to your branch
-10. Create a Pull Request with a detailed description of your changes
-11. Address any review feedback promptly
-12. Once approved, your PR will be merged
 
 ## AI Agent Context
 

@@ -2,6 +2,17 @@
 
 This document describes the database schema for the Worlds Content Server. The schema uses PostgreSQL and is managed through migrations located in `src/migrations/`.
 
+## Database Schema Diagram
+
+<!-- Database DER -->
+
+```mermaid
+erDiagram
+  table1 {
+    VARCHAR address PK
+  }
+```
+
 ## Tables Overview
 
 The database contains two main tables:
@@ -48,9 +59,3 @@ Stores all X, Y to do Z.
 ### Other
 
 <!-- Description of JSON types or other kind of information about the table -->
-
-## Database Notes for AI Agents
-
-<!-- A list of notes for AI agents -->
-
-- **Y**: information useful for the context of AI Agents

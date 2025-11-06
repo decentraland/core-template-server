@@ -33,6 +33,8 @@
 
 - **Concept 1**: To do X, Y is required, as Z is then checked.
 
-**Database Schema:**
+**Database notes:**
 
-- **Full Documentation**: See [docs/database-schemas.md](docs/database-schema.md) for detailed schema, column definitions, and relationships
+<!-- A list of notes for AI agents -->
+
+- **Y**: information useful for the context of AI Agents
