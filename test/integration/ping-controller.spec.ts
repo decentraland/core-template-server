@@ -21,7 +21,7 @@ test('integration sanity tests using a real server backend', function ({ compone
     expect(r.status).toEqual(200)
     expect(await r.text()).toEqual('/ping')
 
-    expect(spyComponents.metrics.increment).toBeCalledWith('test_ping_counter', { pathname: '/ping' })
+    expect(spyComponents.metrics.increment).toHaveBeenCalledWith('test_ping_counter', { pathname: '/ping' })
   })
 
   it('random url responds 404', async () => {
