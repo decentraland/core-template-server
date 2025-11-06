@@ -1,50 +1,168 @@
-# template-server
+# {server-name} Server
 
-## Architecture
+[![Coverage Status](https://coveralls.io/repos/github/{org-name}/{repo-name}/badge.svg?branch=main)](https://coveralls.io/github/{org-name}/{repo-name}?branch=main)
 
-Extension of "ports and adapters architecture", also known as "hexagonal architecture".
+<!-- A brief description of the purpose of the service -->
 
-With this architecture, code is organized into several layers: logic, controllers, adapters, and components (ports).
+This server interacts with X, Y and Z server in order to provider users with F.
 
-## Application lifecycle
+## Table of Contents
 
-1. **Start application lifecycle** - Handled by [src/index.ts](src/index.ts) in only one line of code: `Lifecycle.run({ main, initComponents })`
-2. **Create components** - Handled by [src/components.ts](src/components.ts) in the function `initComponents`
-3. **Wire application & start components** - Handled by [src/service.ts](src/service.ts) in the funciton `main`.
-   1. First wire HTTP routes and other events with [controllers](#src/controllers)
-   2. Then call to `startComponents()` to initialize the components (i.e. http-listener)
+- [Features](#features)
+- [Dependencies & Related Services](#dependencies--related-services)
+- [API Documentation](#api-documentation)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Configuration](#configuration)
+  - [Running the Service](#running-the-service)
+- [Testing](#testing)
+- [How to Contribute](#how-to-contribute)
+- [License](#license)
 
-The same lifecycle is also valid for tests: [test/components.ts](test/components.ts)
+## Features
 
-## Namespaces
+<!-- List of features the server has -->
 
-### src/logic
+- **Feature 1**: Provides Y functionality to the users.
 
-Deals with pure business logic and shouldn't have side-effects or throw exceptions.
+## Dependencies & Related Services
 
-### src/controllers
+<!-- List any services this server depends on or interacts with -->
 
-The "glue" between all the other layers, orchestrating calls between pure business logic and adapters.
+This service interacts with the following services:
 
-Controllers always receive an hydrated context containing components and parameters to call the business logic e.g:
+- **[Service Name 1](link-to-service-repo)**: Description of interaction
+- **[Service Name 2](link-to-service-repo)**: Description of interaction
 
-```ts
-// handler for /ping
-export async function pingHandler(context: {
-  url: URL // parameter added by http-server
-  components: AppComponents // components of the app, part of the global context
-}) {
-  components.metrics.increment("test_ping_counter")
-  return { status: 200 }
-}
+External dependencies:
+
+- List any external APIs or third-party services
+- Database systems
+- Message queues or event streams
+
+## API Documentation
+
+The API is fully documented using the [OpenAPI standard](https://swagger.io/specification/). It's schema is located at [docs/openapi.yaml](docs/ai-agent-context.md).
+
+## Getting Started
+
+### Prerequisites
+
+Before running this service, ensure you have the following installed:
+
+- **Node.js**: Version 22.x or higher (LTS recommended)
+- **Yarn**: Version 1.22.x or higher
+- **Docker** (optional): For containerized deployment
+
+<!-- List any other dependencies that are required to run the service -->
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/{org-name}/{repo-name}.git
+cd {repo-name}
 ```
 
-### src/adapters
+2. Install dependencies:
 
-The layer that converts external data representations into internal ones, and vice-versa. Acts as buffer to protect the service from changes in the outside world; when a data representation changes, you only need to change how the adapters deal with it.
+```bash
+yarn install
+```
 
-### src/components.ts
+3. Build the project:
 
-We use the components abstraction to organize our adapters (e.g. HTTP client, database client, redis client) and any other logic that needs to track mutable state or encode dependencies between stateful components. For every environment (e.g. test, e2e, prod, staging...) we have a different version of our component systems, enabling us to easily inject mocks or different implementations for different contexts.
+```bash
+yarn build
+```
 
-We make components available to incoming http and kafka handlers. For instance, the http-server handlers have access to things like the database or HTTP components, and pass them down to the controller level for general use.
+### Configuration
+
+The service uses environment variables for configuration.
+Create a `.env` file in the root directory containing the environment variables for the service to run.
+Use the `.env.default` variables as an example.
+
+### Running the Service
+
+#### Setting up the environment
+
+In order to successfully run this server, external dependencies such as databases, memory storages and such must be provided.
+To do so, this repository provides you with a `docker-compose` file for that purpose. In order to get the environment set up, run:
+
+```bash
+docker-compose up
+```
+
+#### Running in development mode
+
+To run the service in development mode:
+
+```bash
+yarn start:dev
+```
+
+## Testing
+
+This service includes comprehensive test coverage with both unit and integration tests.
+
+### Running Tests
+
+Run all tests with coverage:
+
+```bash
+yarn test
+```
+
+Run tests in watch mode:
+
+```bash
+yarn test --watch
+```
+
+Run only unit tests:
+
+```bash
+yarn test test/unit
+```
+
+Run only integration tests:
+
+```bash
+yarn test test/integration
+```
+
+### Test Structure
+
+- **Unit Tests** (`test/unit/`): Test individual components and functions in isolation
+- **Integration Tests** (`test/integration/`): Test the complete request/response cycle
+
+For detailed testing guidelines and standards, refer to our [Testing Standards](https://github.com/decentraland/docs/tree/main/development-standards/testing-standards) documentation.
+
+## How to Contribute
+
+We welcome contributions! Before contributing, please familiarize yourself with [our development standards](https://github.com/decentraland/docs/tree/main/development-standards).
+
+### Quick Start for Contributors
+
+1. Fork the repository (if external contributor)
+2. Create a feature branch: `git checkout -b feature/your-feature-name`
+3. Make your changes following our coding standards
+4. Write/update tests for your changes
+5. Ensure all tests pass: `yarn test`
+6. Ensure the build succeeds: `yarn build`
+7. Ensure the linter succeeds: `yarn lint`. You can automatically fix linting issues with `yarn lint:fix`
+8. Commit your changes with clear, descriptive messages
+9. Push to your branch
+10. Create a Pull Request with a detailed description of your changes
+11. Address any review feedback promptly
+12. Once approved, your PR will be merged
+
+## AI Agent Context
+
+For detailed AI Agent context, see [docs/ai-agent-context.md](docs/ai-agent-context.md).
+
+---
+
+**Note**: Remember to replace all placeholders in this README (e.g., `{server-name}`, `{org-name}`, `{repo-name}`, `{service-name}`, links to documentation) with actual values specific to your service.
