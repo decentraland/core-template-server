@@ -29,10 +29,10 @@ security:
 
 paths:
   # List of paths for the API
-  /ping:
+  /health/check:
     get:
-      summary: Ping the server
-      description: Ping the server to check if it is alive
+      summary: Check the server health
+      description: Check the server health to check if it is alive
       responses:
         '200':
           description: OK
