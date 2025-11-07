@@ -9,7 +9,7 @@ import { createHttpTracerComponent } from '@well-known-components/http-tracer-co
 import { createLogComponent } from '@well-known-components/logger'
 import { createMetricsComponent } from '@well-known-components/metrics'
 import { createTracerComponent } from '@well-known-components/tracer-component'
-import { createTracedFetcherComponent } from './adapters/traced-fetcher'
+import { createTracedFetcherComponent } from '@dcl/traced-fetch-component'
 import { metricDeclarations } from './metrics'
 import type { AppComponents, GlobalContext } from './types'
 
