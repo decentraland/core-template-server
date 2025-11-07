@@ -1,23 +1,24 @@
 import type {
-  IConfigComponent,
-  ILoggerComponent,
-  IHttpServerComponent,
   IBaseComponent,
-  IMetricsComponent,
-  IFetchComponent
+  IConfigComponent,
+  IFetchComponent,
+  IHttpServerComponent,
+  ILoggerComponent,
+  IMetricsComponent
 } from '@well-known-components/interfaces'
-import { metricDeclarations } from './metrics'
+import type { metricDeclarations } from './metrics'
 
-export type GlobalContext = {
+export interface GlobalContext {
   components: BaseComponents
 }
 
 // components used in every environment
-export type BaseComponents = {
+export interface BaseComponents {
   config: IConfigComponent
   logs: ILoggerComponent
   server: IHttpServerComponent<GlobalContext>
   metrics: IMetricsComponent<keyof typeof metricDeclarations>
+  fetcher: IFetchComponent
 }
 
 // components used in runtime
@@ -34,7 +35,7 @@ export type TestComponents = BaseComponents & {
 // this type simplifies the typings of http handlers
 export type HandlerContextWithPath<
   ComponentNames extends keyof AppComponents,
-  Path extends string = any
+  Path extends string = string
 > = IHttpServerComponent.PathAwareContext<
   IHttpServerComponent.DefaultContext<{
     components: Pick<AppComponents, ComponentNames>
@@ -42,4 +43,4 @@ export type HandlerContextWithPath<
   Path
 >
 
-export type Context<Path extends string = any> = IHttpServerComponent.PathAwareContext<GlobalContext, Path>
+export type Context<Path extends string = string> = IHttpServerComponent.PathAwareContext<GlobalContext, Path>
