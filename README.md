@@ -11,15 +11,15 @@ This server interacts with X, Y and Z server in order to provider users with F.
 - [Features](#features)
 - [Dependencies & Related Services](#dependencies--related-services)
 - [API Documentation](#api-documentation)
-- [Database Schema](#database-schema)
+- [Database](#database)
+  - [Schema](#schema)
+  - [Migrations](#migrations)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Configuration](#configuration)
   - [Running the Service](#running-the-service)
 - [Testing](#testing)
-- [How to Contribute](#how-to-contribute)
-- [License](#license)
 
 ## Features
 
@@ -46,11 +46,45 @@ External dependencies:
 
 The API is fully documented using the [OpenAPI standard](https://swagger.io/specification/). It's schema is located at [docs/openapi.yaml](docs/ai-agent-context.md).
 
-## Database Schema
+## Database
+
+### Schema
 
 <!-- Remove this section if the service does not have a database -->
 
 See [docs/database-schemas.md](docs/database-schemas.md) for detailed schema, column definitions, and relationships
+
+### Migrations
+
+<!-- Remove this section if the service does not have a database -->
+
+The service uses `node-pg-migrate` for database migrations. These migrations are located in `src/migrations/`. The service automatically runs the migrations when starting up.
+
+#### Create a new migration
+
+Migrations are created by running the create command:
+
+```bash
+yarn migrate create name-of-the-migration
+```
+
+This will result in the creation of a migration file inside of the `src/migrations/` directory. This migration file MUST contain the migration set up and rollback procedures.
+
+#### Manually applying migrations
+
+If required, these migrations can be run manually.
+
+To run them manually:
+
+```bash
+yarn migrate up
+```
+
+To rollback them manually:
+
+```bash
+yarn migrate down
+```
 
 ## Getting Started
 
