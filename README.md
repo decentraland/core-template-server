@@ -20,6 +20,9 @@ This server interacts with X, Y and Z server in order to provider users with F.
   - [Configuration](#configuration)
   - [Running the Service](#running-the-service)
 - [Testing](#testing)
+  - [Running Tests](#running-tests)
+  - [Test Structure](#test-structure)
+- [AI Agent Context](#ai-agent-context)
 
 ## Features
 
