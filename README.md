@@ -95,7 +95,7 @@ yarn migrate down
 
 Before running this service, ensure you have the following installed:
 
-- **Node.js**: Version 22.x or higher (LTS recommended)
+- **Node.js**: Version 24.x or higher (LTS recommended)
 - **Yarn**: Version 1.22.x or higher
 - **Docker**: For containerized deployment
 
