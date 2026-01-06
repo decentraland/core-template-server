@@ -47,7 +47,7 @@ External dependencies:
 
 ## API Documentation
 
-The API is fully documented using the [OpenAPI standard](https://swagger.io/specification/). It's schema is located at [docs/openapi.yaml](docs/ai-agent-context.md).
+The API is fully documented using the [OpenAPI standard](https://swagger.io/specification/). It's schema is located at [docs/openapi.yaml](docs/openapi.yaml).
 
 ## Database
 
